@@ -40,7 +40,10 @@ our %EXPORT_TAGS = ( 'all' => [qw<
 
 our @EXPORT_OK   = ( @{ $EXPORT_TAGS{'all'} } );
 
-XSLoader::load('Ref::Util::XS', $Ref::Util::XS::VERSION);
+XSLoader::load(
+    'Ref::Util::XS',
+    $Ref::Util::XS::{VERSION} ? ${ $Ref::Util::XS::{VERSION} } : (),
+);
 
 1;
 
