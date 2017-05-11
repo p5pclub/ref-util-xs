@@ -28,7 +28,11 @@ README
 *.bs
 *.sw?
 *.tar.gz
+/Util.c
 wrapper.c
 session.c
 wrapper/
-Ref-Util-XS-*
+/Ref-Util-*/
+/Ref-Util-*.tar.gz
+/Ref-Util-XS-*/
+/Ref-Util-XS-*.tar.gz
