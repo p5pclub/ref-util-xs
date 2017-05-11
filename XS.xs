@@ -46,7 +46,7 @@
     {                                                           \
         dXSARGS;                                                \
         if (items != 1)                                         \
-            Perl_croak(aTHX_ "Usage: Ref::Util::" #x "(ref)");  \
+            Perl_croak(aTHX_ "Usage: Ref::Util::XS::" #x "(ref)");  \
         FUNC_BODY(cond);                                        \
     }
 
@@ -156,7 +156,7 @@
 
 #define DECL(x, cond) DECL_RUNTIME_FUNC(x, cond)
 #define INSTALL(x, ref) \
-    newXSproto("Ref::Util::" #x, THX_xsfunc_ ## x, __FILE__, "$");
+    newXSproto("Ref::Util::XS::" #x, THX_xsfunc_ ## x, __FILE__, "$");
 
 #else
 
@@ -174,7 +174,7 @@
         XopENTRY_set(& x ##_xop, xop_class, OA_UNOP);                 \
         Perl_custom_op_register(aTHX_ x ##_op, & x ##_xop);           \
         cv = newXSproto_portable(                                     \
-            "Ref::Util::" #x, THX_xsfunc_ ## x, __FILE__, "$"         \
+            "Ref::Util::XS::" #x, THX_xsfunc_ ## x, __FILE__, "$"         \
         );                                                            \
         cv_set_call_checker(cv, THX_ck_entersub_args_ ## x, (SV*)cv); \
     }
@@ -212,7 +212,7 @@ DECL(is_blessed_formatref, FORMATREF && !PLAIN)
 DECL(is_blessed_ioref,     REFTYPE(== SVt_PVIO) && !PLAIN)
 DECL(is_blessed_refref,    REFREF && !PLAIN)
 
-MODULE = Ref::Util		PACKAGE = Ref::Util
+MODULE = Ref::Util::XS		PACKAGE = Ref::Util::XS
 
 PROTOTYPES: DISABLE
 

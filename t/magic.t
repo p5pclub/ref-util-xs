@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Ref::Util qw<is_arrayref>;
+use Ref::Util::XS qw<is_arrayref>;
 use Test::More 'tests' => 1;
 
 my ( $x, $y );

@@ -1,4 +1,4 @@
-package Ref::Util;
+package Ref::Util::XS;
 # ABSTRACT: Utility functions for checking references
 
 use strict;
@@ -40,7 +40,7 @@ our %EXPORT_TAGS = ( 'all' => [qw<
 
 our @EXPORT_OK   = ( @{ $EXPORT_TAGS{'all'} } );
 
-XSLoader::load('Ref::Util', $Ref::Util::{VERSION} ? ${ $Ref::Util::{VERSION} } : ());
+XSLoader::load('Ref::Util::XS', $Ref::Util::XS::{VERSION} ? ${ $Ref::Util::XS::{VERSION} } : ());
 
 1;
 
@@ -52,7 +52,7 @@ __END__
 
 =head1 DESCRIPTION
 
-Ref::Util introduces several functions to help identify references in a
+Ref::Util::XS introduces several functions to help identify references in a
 faster and B<smarter> way. In short:
 
     ref $foo eq 'ARRAY'
@@ -78,9 +78,9 @@ Here is a benchmark comparing similar checks.
     my $ref    = [];
     $bench->add_instances(
         Dumbbench::Instance::PerlSub->new(
-            name => 'Ref::Util::is_plain_arrayref (CustomOP)',
+            name => 'Ref::Util::XS::is_plain_arrayref (CustomOP)',
             code => sub {
-                Ref::Util::is_plain_arrayref($ref) for ( 1 .. $amount )
+                Ref::Util::XS::is_plain_arrayref($ref) for ( 1 .. $amount )
             },
         ),
 
@@ -109,10 +109,10 @@ Here is a benchmark comparing similar checks.
 The results:
 
 
-    ref():                                   5.335e+00 +/- 1.8e-02 (0.3%)
-    ref(), reftype(), !blessed():            1.5545e+01 +/- 3.1e-02 (0.2%)
-    Ref::Util::is_plain_arrayref (CustomOP): 2.7951e+00 +/- 6.2e-03 (0.2%)
-    Data::Util::is_array_ref:                5.9074e+00 +/- 7.5e-03 (0.1%)
+    ref():                                       5.335e+00 +/- 1.8e-02 (0.3%)
+    ref(), reftype(), !blessed():                1.5545e+01 +/- 3.1e-02 (0.2%)
+    Ref::Util::XS::is_plain_arrayref (CustomOP): 2.7951e+00 +/- 6.2e-03 (0.2%)
+    Data::Util::is_array_ref:                    5.9074e+00 +/- 7.5e-03 (0.1%)
 
 (Rounded run time per iteration)
 
@@ -146,7 +146,7 @@ so even if it's blessed, you know what type of variable is blessed.
     my $foo = bless {}, 'PKG';
     ref($foo) eq 'HASH'; # fails
 
-    use Ref::Util 'is_hashref';
+    use Ref::Util::XS 'is_hashref';
     my $foo = bless {}, 'PKG';
     is_hashref($foo); # works
 
@@ -165,13 +165,13 @@ the relevant underlying type.
 
 Tied variables (used in L<Readonly>, for example) are supported.
 
-    use Ref::Util qw<is_plain_hashref>;
+    use Ref::Util::XS qw<is_plain_hashref>;
     use Readonly;
 
     Readonly::Scalar my $rh2 => { a => { b => 2 } };
     is_plain_hashref($rh2); # success
 
-L<Ref::Util> added support for this in 0.100. Prior to this version
+L<Ref::Util::XS> added support for this in 0.100. Prior to this version
 the test would fail.
 
 =item * Ignores overloading
@@ -230,11 +230,11 @@ This will allow projects to use an optionally-Pure-Perl version.
 Nothing is exported by default. You can ask for specific subroutines
 (described below) or ask for all subroutines at once:
 
-    use Ref::Util qw<is_scalarref is_arrayref is_hashref ...>;
+    use Ref::Util::XS qw<is_scalarref is_arrayref is_hashref ...>;
 
     # or
 
-    use Ref::Util ':all';
+    use Ref::Util::XS ':all';
 
 =head1 SUBROUTINES
 
@@ -439,7 +439,7 @@ Check for a blessed reference to a reference.
 
 A benchmark against L<Data::Util>.
 
-    Ref::Util::is_plain_arrayref: 3.47157e-01 +/- 6.8e-05 (0.0%)
+    Ref::Util::XS::is_plain_arrayref: 3.47157e-01 +/- 6.8e-05 (0.0%)
     Data::Util::is_array_ref:     6.7562e-01 +/- 7.5e-04 (0.1%)
 
 =back

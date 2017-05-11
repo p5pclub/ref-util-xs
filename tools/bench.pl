@@ -2,7 +2,7 @@ use strict;
 use warnings;
 use constant { 'AMOUNT' => 1e8 };
 
-use Ref::Util qw<is_arrayref is_plain_arrayref is_plain_hashref>;
+use Ref::Util::XS qw<is_arrayref is_plain_arrayref is_plain_hashref>;
 use Scalar::Util ();
 use Data::Util ':check';
 use Dumbbench;
@@ -19,8 +19,8 @@ my $ref    = [];
 no warnings;
 $bench->add_instances(
     Dumbbench::Instance::PerlSub->new(
-        'name' => 'Ref::Util::is_plain_arrayref (CustomOP)',
-        'code' => sub { Ref::Util::is_plain_arrayref($ref) for ( 1 .. $amount ) },
+        'name' => 'Ref::Util::XS::is_plain_arrayref (CustomOP)',
+        'code' => sub { Ref::Util::XS::is_plain_arrayref($ref) for ( 1 .. $amount ) },
     ),
 
     Dumbbench::Instance::PerlSub->new(

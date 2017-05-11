@@ -1,6 +1,6 @@
 # NAME
 
-Ref::Util - Utility functions for checking references
+Ref::Util::XS - Utility functions for checking references
 
 # VERSION
 
@@ -8,7 +8,7 @@ version 0.114
 
 # DESCRIPTION
 
-Ref::Util introduces several functions to help identify references in a
+Ref::Util::XS introduces several functions to help identify references in a
 faster and **smarter** way. In short:
 
     ref $foo eq 'ARRAY'
@@ -32,9 +32,9 @@ The difference:
         my $ref    = [];
         $bench->add_instances(
             Dumbbench::Instance::PerlSub->new(
-                name => 'Ref::Util::is_plain_arrayref (CustomOP)',
+                name => 'Ref::Util::XS::is_plain_arrayref (CustomOP)',
                 code => sub {
-                    Ref::Util::is_plain_arrayref($ref) for ( 1 .. $amount )
+                    Ref::Util::XS::is_plain_arrayref($ref) for ( 1 .. $amount )
                 },
             ),
 
@@ -62,10 +62,10 @@ The difference:
 
     The results:
 
-        ref():                                   5.335e+00 +/- 1.8e-02 (0.3%)
-        ref(), reftype(), !blessed():            1.5545e+01 +/- 3.1e-02 (0.2%)
-        Ref::Util::is_plain_arrayref (CustomOP): 2.7951e+00 +/- 6.2e-03 (0.2%)
-        Data::Util::is_array_ref:                5.9074e+00 +/- 7.5e-03 (0.1%)
+        ref():                                       5.335e+00 +/- 1.8e-02 (0.3%)
+        ref(), reftype(), !blessed():                1.5545e+01 +/- 3.1e-02 (0.2%)
+        Ref::Util::XS::is_plain_arrayref (CustomOP): 2.7951e+00 +/- 6.2e-03 (0.2%)
+        Data::Util::is_array_ref:                    5.9074e+00 +/- 7.5e-03 (0.1%)
 
     (Rounded run time per iteration)
 
@@ -99,7 +99,7 @@ The difference:
         my $foo = bless {}, 'PKG';
         ref($foo) eq 'HASH'; # fails
 
-        use Ref::Util 'is_hashref';
+        use Ref::Util::XS 'is_hashref';
         my $foo = bless {}, 'PKG';
         is_hashref($foo); # works
 
@@ -118,13 +118,13 @@ The difference:
 
     Tied variables (used in [Readonly](https://metacpan.org/pod/Readonly), for example) are supported.
 
-        use Ref::Util qw<is_plain_hashref>;
+        use Ref::Util::XS qw<is_plain_hashref>;
         use Readonly;
 
         Readonly::Scalar my $rh2 => { a => { b => 2 } };
         is_plain_hashref($rh2); # success
 
-    [Ref::Util](https://metacpan.org/pod/Ref::Util) added support for this in 0.100. Prior to this version
+    [Ref::Util::XS](https://metacpan.org/pod/Ref::Util::XS) added support for this in 0.100. Prior to this version
     the test would fail.
 
 - Ignores overloading
@@ -177,11 +177,11 @@ This will allow projects to use an optionally-Pure-Perl version.
 Nothing is exported by default. You can ask for specific subroutines
 (described below) or ask for all subroutines at once:
 
-    use Ref::Util qw<is_scalarref is_arrayref is_hashref ...>;
+    use Ref::Util::XS qw<is_scalarref is_arrayref is_hashref ...>;
 
     # or
 
-    use Ref::Util ':all';
+    use Ref::Util::XS ':all';
 
 # SUBROUTINES
 
@@ -382,7 +382,7 @@ Check for a blessed reference to a reference.
 
     A benchmark against [Data::Util](https://metacpan.org/pod/Data::Util).
 
-        Ref::Util::is_plain_arrayref: 3.47157e-01 +/- 6.8e-05 (0.0%)
+        Ref::Util::XS::is_plain_arrayref: 3.47157e-01 +/- 6.8e-05 (0.0%)
         Data::Util::is_array_ref:     6.7562e-01 +/- 7.5e-04 (0.1%)
 
 # THANKS

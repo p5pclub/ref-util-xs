@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use Test::More tests => 6;
-use Ref::Util qw<is_arrayref is_hashref>;
+use Ref::Util::XS qw<is_arrayref is_hashref>;
 
 my $array_func = \&is_arrayref;
 my $hash_func = \&is_hashref;
@@ -26,7 +26,7 @@ for my $case (@cases) {
     my ($name, $code, $desc) = @$case;
     scalar eval $code;
     my $exn = $@;
-    like($exn, qr/^(?: \QUsage: Ref::Util::$name(ref)\E
-                     | \QToo many arguments for Ref::Util::$name\E\b )/x,
+    like($exn, qr/^(?: \QUsage: Ref::Util::XS::$name(ref)\E
+                     | \QToo many arguments for Ref::Util::XS::$name\E\b )/x,
          $desc);
 }
