@@ -416,6 +416,7 @@ accompanying LICENSE file.
 - Aaron Crane <arc@cpan.org>
 - Vikenty Fesunov <vyf@cpan.org>
 - Gonzalo Diethelm <gonzus@cpan.org>
+- Karen Etheridge <ether@cpan.org>
 
 # COPYRIGHT AND LICENSE
 
