@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use Test::More 'tests' => 5;
-use Ref::Util ':all';
+use Ref::Util::XS ':all';
 
 # FIXME: plain regular expressions, blessed regular expressions
 

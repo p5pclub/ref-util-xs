@@ -3,12 +3,12 @@ use warnings;
 use Test::More tests => 7;
 
 BEGIN {
-    use_ok('Ref::Util');
-    Ref::Util->import('is_arrayref');
+    use_ok('Ref::Util::XS');
+    Ref::Util::XS->import('is_arrayref');
 }
 
-can_ok( Ref::Util::, 'is_arrayref' );
-Ref::Util::is_arrayref(\1);
+can_ok( Ref::Util::XS::, 'is_arrayref' );
+Ref::Util::XS::is_arrayref(\1);
 
 ok( !is_arrayref(\1), 'Correctly identify scalarref' );
 ok( !is_arrayref({}), 'Correctly identify hashref' );

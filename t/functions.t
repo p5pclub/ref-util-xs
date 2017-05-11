@@ -50,9 +50,9 @@ BEGIN {
 }
 
 BEGIN {
-    use_ok('Ref::Util');
+    use_ok('Ref::Util::XS');
 
-    Ref::Util->import(qw<
+    Ref::Util::XS->import(qw<
         is_ref
         is_scalarref
         is_arrayref

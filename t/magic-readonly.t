@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use Test::More;
-use Ref::Util qw<is_hashref is_plain_hashref is_blessed_hashref>;
+use Ref::Util::XS qw<is_hashref is_plain_hashref is_blessed_hashref>;
 
 eval { require Readonly; Readonly->import; 1; }
 or plan 'skip_all' => 'Readonly is required for this test';

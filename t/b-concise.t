@@ -1,14 +1,14 @@
 use strict;
 use warnings;
 use Test::More;
-use Ref::Util 'is_arrayref';
+use Ref::Util::XS 'is_arrayref';
 require B::Concise;
 
 plan skip_all => 'This version of B::Concise does not have "compile"'
     if !B::Concise->can('compile');
 
 plan skip_all => 'nothing to do when no custom ops'
-    if !Ref::Util::_using_custom_ops();
+    if !Ref::Util::XS::_using_custom_ops();
 
 plan tests => 2;
 
