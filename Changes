@@ -1,5 +1,11 @@
 {{$NEXT}}
 
+        * This (and 0.114) is effectively Ref-Util 0.113. It is being
+          released as Ref-Util-XS to make room for Ref-Util's new
+          pure-Perl interface.
+
+0.114
+
 0.113     2017-01-16 19:36:58+01:00 Europe/Amsterdam
 
         * Fix bugtracker link.
