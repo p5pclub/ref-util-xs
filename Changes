@@ -1,10 +1,12 @@
 {{$NEXT}}
 
+        * Changes rephrasing. (Ilmari)
+
 0.115     2017-05-12 09:48:02+02:00 Europe/Amsterdam
 
         * This (and 0.114) is effectively Ref-Util 0.113. It is being
           released as Ref-Util-XS to make room for Ref-Util's new
-          pure-Perl interface.
+          pure-Perl implementation.
 
 0.114
 
