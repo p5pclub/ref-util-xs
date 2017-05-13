@@ -37,6 +37,7 @@ my %all;
 
     %all = (
         'plain_scalarref' => \$plain_scalar,
+        'plain_scalarref_vstring' => \v1.2.3,
         'plain_arrayref'  => [],
         'plain_hashref'   => +{},
         'plain_coderef'   => sub {'plain_code'},
@@ -46,6 +47,7 @@ my %all;
         'plain_refref'    => \\$plain_scalar,
 
         'blessed_scalarref' => $blessed_scalarref,
+        'blessed_scalarref_vstring' => bless( \ do { my $x = v1.2.3 }, 'ScalarRef' ),
         'blessed_arrayref'  => bless( [], 'ArrayRef' ),
         'blessed_hashref'   => bless( +{}, 'HashRef' ),
         'blessed_coderef'   => bless( sub {'blessed_code'}, 'CodeRef' ),
@@ -55,6 +57,7 @@ my %all;
         'blessed_refref'    => bless( \\$blessed_scalarref, 'RefRef' ),
 
         'evil_blessed_scalarref' => bless( \ do { my $x = 'evil' }, '0' ),
+        'evil_blessed_scalarref_vstring' => bless( \ do { my $x = v1.2.3 }, '0' ),
         'evil_blessed_arrayref'  => bless( [], '0' ),
         'evil_blessed_hashref'   => bless( +{}, '0' ),
         'evil_blessed_coderef'   => bless( sub {'blessed_code'}, '0' ),
@@ -169,7 +172,7 @@ subtest 'plain references' => sub {
     foreach my $plain_type (@plain_keys) {
         my $value = $plain{$plain_type};
 
-        if ( $plain_type eq 'plain_scalarref' ) {
+        if ( $plain_type =~ /plain_scalarref/ ) {
             ok(
                 is_plain_scalarref($value),
                 "is_plain_scalarref($plain_type) is true",
