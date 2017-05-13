@@ -1,6 +1,8 @@
 {{$NEXT}}
 
         * Changes rephrasing. (Ilmari)
+        * Restore 5.6 compatibility
+        * Replace docs with a link to Ref::Util
 
 0.115     2017-05-12 09:48:02+02:00 Europe/Amsterdam
 
