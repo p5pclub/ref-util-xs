@@ -3,7 +3,7 @@ blib/
 pm_to_blib
 MANIFEST.bak
 /Makefile
-#ppport.h
+ppport.h
 *.sw[po]
 *.bak
 *.old
@@ -28,7 +28,7 @@ README
 *.bs
 *.sw?
 *.tar.gz
-/Util.c
+/XS.c
 wrapper.c
 session.c
 wrapper/
