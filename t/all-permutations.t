@@ -45,6 +45,7 @@ my %all;
         'plain_globref'   => \*::var_for_globref,
         'plain_formatref' => $plain_formatref,
         'plain_refref'    => \\$plain_scalar,
+        'plain_refref_sub' =>  \sub{},
 
         'blessed_scalarref' => $blessed_scalarref,
         'blessed_scalarref_vstring' => bless( \ do { my $x = v1.2.3 }, 'ScalarRef' ),
@@ -55,6 +56,7 @@ my %all;
         'blessed_globref'   => bless( \*::var_for_blessed_globref, 'GlobRef' ),
         'blessed_formatref' => $blessed_formatref,
         'blessed_refref'    => bless( \\$blessed_scalarref, 'RefRef' ),
+        'blessed_refref_sub' => bless( \sub {}, 'RefRef' ),
 
         'evil_blessed_scalarref' => bless( \ do { my $x = 'evil' }, '0' ),
         'evil_blessed_scalarref_vstring' => bless( \ do { my $x = v1.2.3 }, '0' ),
@@ -65,6 +67,7 @@ my %all;
         'evil_blessed_globref'   => bless( \*::var_for_evil_globref, '0' ),
         'evil_blessed_formatref' => $evil_blessed_formatref,
         'evil_blessed_refref'    => bless( \\do { my $x = 'evil' }, '0' ),
+        'evil_blessed_refref_sub' => bless( \sub {}, '0' ),
     );
 }
 
@@ -330,7 +333,7 @@ subtest 'plain references' => sub {
     foreach my $plain_type (@plain_keys) {
         my $value = $plain{$plain_type};
 
-        if ( $plain_type eq 'plain_refref' ) {
+        if ( $plain_type =~ /plain_refref/ ) {
             ok(
                 is_plain_refref($value),
                 "is_plain_refref($plain_type) is true",
