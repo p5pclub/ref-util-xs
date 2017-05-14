@@ -38,6 +38,7 @@ my %all;
     %all = (
         'plain_scalarref' => \$plain_scalar,
         'plain_scalarref_vstring' => \v1.2.3,
+        'plain_scalarref_lvref' => \substr($plain_scalar, 1),
         'plain_arrayref'  => [],
         'plain_hashref'   => +{},
         'plain_coderef'   => sub {'plain_code'},
@@ -49,6 +50,7 @@ my %all;
 
         'blessed_scalarref' => $blessed_scalarref,
         'blessed_scalarref_vstring' => bless( \ do { my $x = v1.2.3 }, 'ScalarRef' ),
+        'blessed_scalarref_lvref' => bless( \substr($plain_scalar, 1), 'LvRef' ),
         'blessed_arrayref'  => bless( [], 'ArrayRef' ),
         'blessed_hashref'   => bless( +{}, 'HashRef' ),
         'blessed_coderef'   => bless( sub {'blessed_code'}, 'CodeRef' ),
@@ -60,6 +62,7 @@ my %all;
 
         'evil_blessed_scalarref' => bless( \ do { my $x = 'evil' }, '0' ),
         'evil_blessed_scalarref_vstring' => bless( \ do { my $x = v1.2.3 }, '0' ),
+        'evil_blessed_scalarref_lvref' => bless( \substr($plain_scalar, 1), '0' ),
         'evil_blessed_arrayref'  => bless( [], '0' ),
         'evil_blessed_hashref'   => bless( +{}, '0' ),
         'evil_blessed_coderef'   => bless( sub {'blessed_code'}, '0' ),
