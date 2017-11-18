@@ -42,6 +42,27 @@ our @EXPORT_OK   = ( @{ $EXPORT_TAGS{'all'} } );
 
 XSLoader::load('Ref::Util::XS', $Ref::Util::XS::{VERSION} ? ${ $Ref::Util::XS::{VERSION} } : ());
 
+if (_using_custom_ops()) {
+  for my $op (@{$EXPORT_TAGS{all}}) {
+    no strict 'refs';
+    *{"B::Deparse::pp_$op"} = sub {
+      my ($deparse, $bop, $cx) = @_;
+      my @kids = $deparse->deparse($bop->first, 6);
+      my $sib = $bop->first->sibling;
+      if (ref $sib ne 'B::NULL') {
+        push @kids, $deparse->deparse($sib, 6);
+      }
+      my $prefix
+        = (
+          exists &{"$deparse->{curstash}::$op"}
+          && \&{"$deparse->{curstash}::$op"} == \&{__PACKAGE__.'::'.$op}
+        )
+        ? '' : (__PACKAGE__.'::');
+      return "$prefix$op(" . join(", ", @kids) . ")";
+    };
+  }
+}
+
 1;
 
 __END__
