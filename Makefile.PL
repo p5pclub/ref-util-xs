@@ -14,3 +14,4 @@ WriteMakefile(
 
 use Devel::PPPort;
 Devel::PPPort::WriteFile();
+system("$^X ppport.h --compat-version=5.006 --quiet *.xs *.[hc]");

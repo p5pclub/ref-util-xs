@@ -62,9 +62,9 @@
         return NORMAL;                          \
     }
 
-// This function extracts the args for the custom op, and deletes the remaining
-// ops from memory, so they can then be replaced entirely by the custom op.
-/*
+/* This function extracts the args for the custom op, and deletes the remaining
+   ops from memory, so they can then be replaced entirely by the custom op.
+
     This is how the ops will look like:
 
     $ perl -MO=Concise -E'is_arrayref($foo)'
