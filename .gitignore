@@ -2,7 +2,6 @@
 /MANIFEST.bak
 /Makefile
 /Makefile.old
-ppport.h
 *.sw[po]
 *.bak
 *.old
