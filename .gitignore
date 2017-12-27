@@ -3,7 +3,6 @@ blib/
 pm_to_blib
 MANIFEST.bak
 /Makefile
-ppport.h
 *.sw[po]
 *.bak
 *.old
