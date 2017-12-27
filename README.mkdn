@@ -4,7 +4,7 @@ Ref::Util::XS - XS implementation for Ref::Util
 
 # VERSION
 
-version 0.116
+version 0.117
 
 # SYNOPSIS
 
