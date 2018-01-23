@@ -32,5 +32,4 @@ matrix:
     allow_failures:
         - perl: blead
 before_install:
-          - cpanm Readonly  # so t/magic-readonly.t can run
           - eval $(curl https://travis-perl.github.io/init) --auto
