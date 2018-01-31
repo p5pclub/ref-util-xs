@@ -89,10 +89,10 @@ Ref::Util::XS is the XS implementation of Ref::Util, which provides several
 functions to help identify references in a more convenient way than the
 usual approach of examining the return value of C<ref>.
 
-You should use Ref::Util::XS by installing Ref::Util itself: if the system
-you install it on has a C compiler available, Ref::Util::XS will be
+You should use L<Ref::Util::XS> by installing L<Ref::Util> itself: if the system
+you install it on has a C compiler available, C<Ref::Util::XS> will be
 installed and used automatically, providing a significant speed boost to
-everything that uses Ref::Util.
+everything that uses C<Ref::Util>.
 
 See L<Ref::Util> for full documentation of the available functions.
 
@@ -118,7 +118,7 @@ The following people have been invaluable in their feedback and support.
 
 =back
 
-=head1 AUTHORS
+=head1 AUTHORS AND MAINTAINERS
 
 =over 4
 
@@ -129,6 +129,10 @@ The following people have been invaluable in their feedback and support.
 =item * Sawyer X
 
 =item * Gonzalo Diethelm
+
+=item * Karen Etheridge
+
+=item * Graham Knop
 
 =item * p5pclub
 
