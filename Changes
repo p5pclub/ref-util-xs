@@ -1,5 +1,7 @@
 {{$NEXT}}
 
+        * Allow the custom OPs to be deparsed with B::Deparse.
+          (Graham @haarg Knop)
         * Optimize the shared object size by moving common call checker
           logic into a function. (James Raspass)
 
