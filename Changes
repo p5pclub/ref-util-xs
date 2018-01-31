@@ -1,5 +1,7 @@
 {{$NEXT}}
 
+0.117     2018-01-31 12:47:11+01:00 Europe/Amsterdam
+
         * Allow the custom OPs to be deparsed with B::Deparse.
           (Graham @haarg Knop)
         * Optimize the shared object size by moving common call checker

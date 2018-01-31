@@ -24,10 +24,10 @@ Ref::Util::XS is the XS implementation of Ref::Util, which provides several
 functions to help identify references in a more convenient way than the
 usual approach of examining the return value of `ref`.
 
-You should use Ref::Util::XS by installing Ref::Util itself: if the system
-you install it on has a C compiler available, Ref::Util::XS will be
+You should use [Ref::Util::XS](https://metacpan.org/pod/Ref::Util::XS) by installing [Ref::Util](https://metacpan.org/pod/Ref::Util) itself: if the system
+you install it on has a C compiler available, `Ref::Util::XS` will be
 installed and used automatically, providing a significant speed boost to
-everything that uses Ref::Util.
+everything that uses `Ref::Util`.
 
 See [Ref::Util](https://metacpan.org/pod/Ref::Util) for full documentation of the available functions.
 
@@ -43,12 +43,14 @@ The following people have been invaluable in their feedback and support.
 - Tony Cook
 - Sergey Aleynikov
 
-# AUTHORS
+# AUTHORS AND MAINTAINERS
 
 - Aaron Crane
 - Vikentiy Fesunov
 - Sawyer X
 - Gonzalo Diethelm
+- Karen Etheridge
+- Graham Knop
 - p5pclub
 
 # LICENSE
@@ -63,10 +65,11 @@ accompanying LICENSE file.
 - Vikenty Fesunov <vyf@cpan.org>
 - Gonzalo Diethelm <gonzus@cpan.org>
 - Karen Etheridge <ether@cpan.org>
+- Graham Knop <haarg@cpan.org>
 
 # COPYRIGHT AND LICENSE
 
-This software is Copyright (c) 2017 by Sawyer X.
+This software is Copyright (c) 2018 by Sawyer X.
 
 This is free software, licensed under:
 
