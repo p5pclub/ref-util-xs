@@ -90,8 +90,8 @@ functions to help identify references in a more convenient way than the
 usual approach of examining the return value of C<ref>.
 
 You should use L<Ref::Util::XS> by installing L<Ref::Util> itself: if the system
-you install it on has a C compiler available, C<Ref::Util::XS> will be
-installed and used automatically, providing a significant speed boost to
+you install it on has a C compiler available, C<Ref::Util::XS> should be
+installed as a prerequisite and used automatically, providing a significant speed boost to
 everything that uses C<Ref::Util>.
 
 See L<Ref::Util> for full documentation of the available functions.
